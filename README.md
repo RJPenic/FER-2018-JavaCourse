@@ -7,3 +7,5 @@ First 11 homeworks explore basics of Java programming language(multithreading, S
 Each homework folder contains a PDF explaining what is each homework about.
 
 Seventh homework is not present since the eighth homeworks continues on it.
+
+Author: Rafael Josip Penić
