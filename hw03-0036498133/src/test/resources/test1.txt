@@ -1,0 +1,4 @@
+{$ FOR i 1 3 rtl   $}
+ ascwdc  {$  = i i i + 3   $}
+
+sdf

@@ -1,0 +1,3 @@
+{$ sMart i 1 3 rtl   $} ascwdc  
+{$ =  frets $}  
+VASsc

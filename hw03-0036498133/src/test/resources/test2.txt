@@ -1,0 +1,3 @@
+{$ FOR i 1 3 rtl   $} 
+ascwdc  {$END$}  VASsc 
+{$End$} s

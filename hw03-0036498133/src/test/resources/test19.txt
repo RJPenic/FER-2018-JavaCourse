@@ -1,0 +1,1 @@
+{$for 1 @sin 4 i$} as {$end$}
