@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    >
+
+    <TextView
+        android:textColor="@color/colorPrimaryDark"
+        android:layout_margin="16dp"
+        android:textSize="18sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/enter_numbers" />
+
+    <EditText
+        android:id="@+id/input_first"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:hint="@string/unesite_dijeljenika"
+        android:inputType="number"/>
+
+    <EditText
+        android:id="@+id/input_second"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:hint="@string/unesite_djelitelja"
+        android:inputType="number"/>
+
+    <TextView
+        android:id="@+id/output_result"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="18sp"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <Button
+            android:id="@+id/btn_send"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:text="@string/send_result"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"/>
+
+        <Button
+            android:id="@+id/btn_calculate"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:text="@string/btn_calculate"
+            android:layout_above="@id/btn_send"
+            android:layout_centerHorizontal="true"/>
+
+        <Button
+            android:id="@+id/btn_compose_mail"
+            android:layout_above = "@id/btn_calculate"
+            android:layout_centerHorizontal="true"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:text="@string/compose_mail"/>
+
+        <TextView
+            android:id="@+id/opt_label"
+            android:textColor="@color/colorPrimaryDark"
+            android:layout_margin="5dp"
+            android:textSize="15sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/opt"
+            android:layout_centerHorizontal="true"
+            android:layout_above="@id/btn_compose_mail"/>
+
+        <Button
+            android:id="@+id/btn_en"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:text="@string/choose_lang"
+            android:layout_centerHorizontal="true"
+            android:layout_above="@id/opt_label"/>
+
+        <TextView
+            android:textColor="@color/colorPrimaryDark"
+            android:layout_margin="5dp"
+            android:textSize="15sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/langs"
+            android:layout_centerHorizontal="true"
+            android:layout_above="@id/btn_en"/>
+
+    </RelativeLayout>
+
+</LinearLayout>
