@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+	<html>
+		<head>
+			<meta charset="UTF-8">
+			<title>Igrači</title>
+			
+			<style>
+				h1 {font-style: oblique;}
+				h1:HOVER {font-style: italic; color: red;}
+				
+				button {elevation: higher;}
+				button {border: thick;}
+				button {font: serif;}
+				button {margin: margin-top: 5px; margin-left: 5px; margin-bottom: 5px;}
+				
+				.grid-container {
+					  display: grid;
+					  grid-template-columns: auto auto auto;
+					  padding: 10px;
+					  grid-column-gap: 50px;
+					  grid-row-gap: 50px;
+					  justify-content: center;
+				}
+				
+				.grid-item {
+					  background-color: rgba(30, 11, 45, 0.5);
+					  border: 1px solid rgba(0, 0, 0, 0.8);
+					  padding: 20px;
+					  width: 200px;
+					  height: 200px;
+					  align-items: center;
+					  justify-content: center;
+					  text-align: center;
+				}
+				
+			</style>
+			<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+			<script type="text/javascript">
+				function getTags() {
+					$.ajax (
+						{
+							url:"rest/tagj",
+							data: {},
+							dataType: "json",
+							success: function(data) {
+								var tags = data.tagSet;
+								var html = "";
+								
+								for(var i=0; i<tags.length; i++) {
+									html += 
+										"<button type=\"button\" onclick=\"getPictures('" + 
+										tags[i] + "');\">" +
+										tags[i]  + "</button>";
+								}
+								
+								$("#buttons").html(html);
+							}
+						}	
+					);
+				}
+				
+				function getPictures(selectedTag) {
+					$.ajax (
+						{
+							url:"rest/picnames/" + selectedTag,
+							data: {},
+							dataType: "json",
+							success: function(data) {
+								var imgSrcs = data.imgSrcs;
+								var html = "";
+								
+								html += "<div class=\"grid-container\">";
+								for(var i=0; i<imgSrcs.length; i++) {
+									html += "<div class=\"grid-item\">";
+									html += "<img src=\"servlets/getImage?src=" +
+											imgSrcs[i] +
+											"\" onclick=\"onPictureClick(\'" + imgSrcs[i] +
+											"\',\'" + selectedTag + "\')\">";
+									html += "</div>";
+								}
+								html += "</div>";
+								
+								$("#show").html(html);
+							}
+						}	
+					);
+				}
+				
+				function onPictureClick(picName, selectedTag) {
+					$.ajax (
+						{
+							url:"rest/picnames/origin/" + picName,
+							data: {},
+							dataType: "json",
+							success: function(data) {
+								var tags = data.tags;
+								var title = data.title;
+								var html = "";
+										
+								html += "<img src=\"servlets/getOriginImage?src=" +
+											picName +
+											"\">";
+								
+								html += "<br>";
+											
+								html += "<b> Naslov : " + title + "</b>";
+								
+								html += "<br>";
+								
+								html += "<b> Tagovi : "
+								for(var i=0; i<tags.length; i++) {
+									html += tags[i];
+										
+									if(i != tags.length - 1) {
+										html += ", ";
+									}
+								}
+								html += "</b>"
+								
+								html += "<br>";
+								
+								html += "<button type=\"button\" onclick=\"getPictures(\'" +
+									selectedTag + "\')\">Natrag u galeriju</button>";
+									
+								$("#show").html(html);
+							}
+						}	
+					);
+				}
+			</script>
+		</head>
+		
+		<body onload="getTags()">
+			<h1>Igrači</h1>
+			
+			<b style="text-decoration: underline;">Tagovi:</b>
+			<div id="buttons">&nbsp;</div>
+			
+			<br>
+			
+			<div id="show">&nbsp;</div>
+			
+			<br>
+		</body>
+	</html>
